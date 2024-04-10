@@ -1,28 +1,25 @@
-import cv2, os, time, webbrowser
-
 try:
-    import cv2, os, time, webbrowser
+    import cv2, os, time
 except ModuleNotFoundError:
     os.system("pip install opencv-python")
     os.system("pip install os")
     os.system("pip install time")
-    os.system("pip install webbrowser")
     
     os.system("clear")
 
-black = "\033[1;30m"
-red = "\033[1;31m"
-green = "\033[1;32m"
-yellow = "\033[1;33m"
-blue = "\033[1;34m"
-purple = "\033[1;35m"
-cyan = "\033[1;36m"
-white = "\033[1;37m"
-gray = "\033[1;39m"
-dark_red = "\033[2;31m"
-dark_blue = "\033[2;34m"
-dark_pink = "\033[2;35m"
-dark_cyan = "\033[2;36m"
+Black = "\033[1;30m"
+Red = "\033[1;31m"
+Green = "\033[1;32m"
+Yellow = "\033[1;33m"
+Blue = "\033[1;34m"
+Purple = "\033[1;35m"
+Cyan = "\033[1;36m"
+White = "\033[1;37m"
+Gray = "\033[1;39m"
+DarkRed = "\033[2;31m"
+DarkBlue = "\033[2;34m"
+DarkPink = "\033[2;35m"
+DarkCyan = "\033[2;36m"
 
 print("""
                                       :~~~~?J5PB#&&&##BP5J7^.
@@ -111,10 +108,8 @@ if option == "1" or option == "Read Images Dimensions & Pixels":
     try:
         pixels = img_read1.size
         dim1 = img_read1.shape
-    except AttributeError:
-        print("\033[1;31mPlease Check That The Img Name Or Path is Correct!")
-    except Exception as error_opening_img:
-        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+    except AttributeError: print("\033[1;31mPlease Check That The Img Name Or Path is Correct!")
+    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
     exit()
 
 if option == "2" or option == "Open Images & Play Videos & Camera":
@@ -128,10 +123,8 @@ if option == "2" or option == "Open Images & Play Videos & Camera":
         img_read2 = cv2.imread(img_name2)
         img_open2 = cv2.imshow('Img Name', img_read2)
 
-        try:
-            img_open2 = cv2.imshow('Img Name', img_read2)
-        except Exception as error_opening_img:
-            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+        try: img_open2 = cv2.imshow('Img Name', img_read2)
+        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
         cv2.waitKey(0)
         cv2.destroyAllWindows()
@@ -143,11 +136,9 @@ if option == "2" or option == "Open Images & Play Videos & Camera":
             ret, frame = vid_read1.read()
             vid_open1 = cv2.imshow('Vid Name', frame)
 
-            if cv2.waitKey(1) & 0xff == ord('q'):
-                break
+            if cv2.waitKey(1) & 0xff == ord('q'): break
             
-        try:
-            vid_open1 = cv2.imshow('Vid Name', frame)
+        try: vid_open1 = cv2.imshow('Vid Name', frame)
         except Exception as error_opening_vid:
             print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
     elif choose_option2 == "3" or choose_option2 == "Camera":
@@ -157,10 +148,8 @@ if option == "2" or option == "Open Images & Play Videos & Camera":
             ret, video = cam_read.read()
             cam_open = cv2.imshow('Cam', video)
 
-            if cv2.waitKey(1) & 0xff == ord('q'):
-                break
-    else:
-        print("\033[1;31mPlease Check The Correct Option!")
+            if cv2.waitKey(1) & 0xff == ord('q'): break
+    else: print("\033[1;31mPlease Check The Correct Option!")
 
 if option == "3" or option == "Resize Images & Videos":
     choose_option3 = input("""\033[1;37m[\033[1;33m1\033[1;37m] \033[1;33m- \033[1;37mImages
@@ -192,10 +181,8 @@ if option == "3" or option == "Resize Images & Videos":
 
             img_open3 = cv2.imshow('Img Name', new_img_size1)
 
-            try:
-                img_open3 = cv2.imshow('Img Name', new_img_size1)
-            except Exception as error_opening_img:
-                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+            try: img_open3 = cv2.imshow('Img Name', new_img_size1)
+            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
             cv2.waitKey(0)
             cv2.destroyAllWindows()
@@ -212,10 +199,8 @@ if option == "3" or option == "Resize Images & Videos":
                     cv2.imwrite('Img Name RS.DS.png', new_img_size1)
                     print("Successfully Saved!")
 
-                    try:
-                        cv2.imwrite('Img Name RS.DS.png', new_img_size1)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                    try: cv2.imwrite('Img Name RS.DS.png', new_img_size1)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                     exit()
                 elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                     directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -224,13 +209,10 @@ if option == "3" or option == "Resize Images & Videos":
                     cv2.imwrite('Img Name RS.DS.jpg', new_img_size1)
                     print("Successfully Saved!")
 
-                    try:
-                        cv2.imwrite('Img Name RS.DS.jpg', new_img_size1)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                    try: cv2.imwrite('Img Name RS.DS.jpg', new_img_size1)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
             elif img_save1 == "N" or img_save1 == "n":
                 print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                 exit()
@@ -251,10 +233,8 @@ if option == "3" or option == "Resize Images & Videos":
 
             img_open3 = cv2.imshow('Img Name', new_img_size2)
 
-            try:
-                img_open3 = cv2.imshow('Img Name', new_img_size2)
-            except Exception as error_opening_img:
-                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+            try: img_open3 = cv2.imshow('Img Name', new_img_size2)
+            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
             cv2.waitKey(0)
             cv2.destroyAllWindows()
@@ -271,10 +251,8 @@ if option == "3" or option == "Resize Images & Videos":
                     cv2.imwrite('Img Name RS.US.png', new_img_size2)
                     print("Successfully Saved!")
 
-                    try:
-                        cv2.imwrite('Img Name RS.US.png', new_img_size2)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                    try: cv2.imwrite('Img Name RS.US.png', new_img_size2)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                     exit()
                 elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                     directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -283,13 +261,10 @@ if option == "3" or option == "Resize Images & Videos":
                     cv2.imwrite('Img Name RS.US.jpg', new_img_size2)
                     print("Successfully Saved!")
 
-                    try:
-                        cv2.imwrite('Img Name RS.US.jpg', new_img_size2)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                    try: cv2.imwrite('Img Name RS.US.jpg', new_img_size2)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
             elif img_save2 == "N" or img_save2 == "n":
                 print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                 exit()
@@ -309,10 +284,8 @@ if option == "3" or option == "Resize Images & Videos":
 
             img_open3 = cv2.imshow('Img Name', new_img_size3)
 
-            try:
-                img_open3 = cv2.imshow('Img Name', new_img_size3)
-            except Exception as error_opening_img:
-                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+            try: img_open3 = cv2.imshow('Img Name', new_img_size3)
+            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
             cv2.waitKey(0)
             cv2.destroyAllWindows()
@@ -329,10 +302,8 @@ if option == "3" or option == "Resize Images & Videos":
                     cv2.imwrite('Img Name RS.ROTW.png', new_img_size3)
                     print("Successfully Saved!")
 
-                    try:
-                        cv2.imwrite('Img Name RS.ROTW.png', new_img_size3)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                    try: cv2.imwrite('Img Name RS.ROTW.png', new_img_size3)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                     exit()
                 elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                     directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -340,10 +311,8 @@ if option == "3" or option == "Resize Images & Videos":
                     cv2.imwrite('Img Name RS.ROTW.jpg', new_img_size3)
                     print("Successfully Saved!")
 
-                    try:
-                        cv2.imwrite('Img Name RS.ROTW.jpg', new_img_size3)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                    try: cv2.imwrite('Img Name RS.ROTW.jpg', new_img_size3)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                     exit()
             elif img_save3 == "N" or img_save3 == "n":
                 print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
@@ -364,10 +333,8 @@ if option == "3" or option == "Resize Images & Videos":
 
             img_open3 = cv2.imshow('Img Name', new_img_size4)
             
-            try:
-                img_open3 = cv2.imshow('Img Name', new_img_size4)
-            except Exception as error_opening_img:
-                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+            try: img_open3 = cv2.imshow('Img Name', new_img_size4)
+            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
             cv2.waitKey(0)
             cv2.destroyAllWindows()
@@ -384,10 +351,8 @@ if option == "3" or option == "Resize Images & Videos":
                     cv2.imwrite('Img Name RS.ROTH.png', new_img_size4)
                     print("Successfully Saved!")
 
-                    try:
-                        cv2.imwrite('Img Name RS.ROTH.png', new_img_size4)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                    try: cv2.imwrite('Img Name RS.ROTH.png', new_img_size4)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                     exit()
                 elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                     directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -396,13 +361,10 @@ if option == "3" or option == "Resize Images & Videos":
                     cv2.imwrite('Img Name RS.ROTH.png', new_img_size4)
                     print("Successfully Saved!")
 
-                    try:
-                        cv2.imwrite('Img Name RS.ROTH.png', new_img_size4)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                    try: cv2.imwrite('Img Name RS.ROTH.png', new_img_size4)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
             elif img_save4 == "N" or img_save4 == "n":
                 print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                 exit()
@@ -422,10 +384,8 @@ if option == "3" or option == "Resize Images & Videos":
 
             img_open3 = cv2.imshow('Img Name', new_img_size5)
 
-            try:
-                img_open3 = cv2.imshow('Img Name', new_img_size5)
-            except Exception as error_opening_img:
-                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+            try: img_open3 = cv2.imshow('Img Name', new_img_size5)
+            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
             cv2.waitKey(0)
             cv2.destroyAllWindows()
@@ -442,10 +402,8 @@ if option == "3" or option == "Resize Images & Videos":
                     cv2.imwrite('Img Name RS.RTSWH.png', new_img_size5)
                     print("Successfully Saved!")
 
-                    try:
-                        cv2.imwrite('Img Name RS.RTSWH.png', new_img_size5)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                    try: cv2.imwrite('Img Name RS.RTSWH.png', new_img_size5)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                     exit()
                 elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                     directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -454,13 +412,10 @@ if option == "3" or option == "Resize Images & Videos":
                     cv2.imwrite('Img Name RS.RTSWH.jpg', new_img_size5)
                     print("Successfully Saved!")
 
-                    try:
-                        cv2.imwrite('Img Name RS.RTSWH.jpg', new_img_size5)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                    try: cv2.imwrite('Img Name RS.RTSWH.jpg', new_img_size5)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
             elif img_save5 == "N" or img_save5 == "n":
                 print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                 exit()
@@ -491,13 +446,10 @@ if option == "3" or option == "Resize Images & Videos":
                 frame_resized = rescale_frame1(frame, scale=0.6)
                 vid_open2 = cv2.imshow('Vid Name', frame_resized)
                 
-                if cv2.waitKey(1) & 0xff == ord('q'):
-                    break
+                if cv2.waitKey(1) & 0xff == ord('q'): break
 
-            try:
-                vid_open2 = cv2.imshow('Vid Name', frame_resized)
-            except Exception as error_opening_vid:
-                print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
+            try: vid_open2 = cv2.imshow('Vid Name', frame_resized)
+            except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
 
             vid_read2.release()
             cv2.destroyAllWindows()
@@ -510,10 +462,8 @@ if option == "3" or option == "Resize Images & Videos":
                 cv2.VideoWriter('Vid Name RM.DS.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open2)
                 print("Successfully Saved!")
 
-                try:
-                    cv2.VideoWriter('Vid Name RM.DS.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open2)
-                except Exception as error_opening_vid:
-                    print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
+                try: cv2.VideoWriter('Vid Name RM.DS.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open2)
+                except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
                 exit()
             elif vid_save1 == "N" or vid_save1 == "n":
                 print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
@@ -535,13 +485,10 @@ if option == "3" or option == "Resize Images & Videos":
                 frame_resized = rescale_frame2(frame, scale=0.2)
                 vid_open2 = cv2.imshow('Vid Name', frame_resized)
                 
-                if cv2.waitKey(1) & 0xff == ord('q'):
-                    break
+                if cv2.waitKey(1) & 0xff == ord('q'): break
 
-            try:
-                vid_open2 = cv2.imshow('Vid Name', frame_resized)
-            except Exception as error_opening_vid:
-                print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
+            try: vid_open2 = cv2.imshow('Vid Name', frame_resized)
+            except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
 
             cv2.waitKey(0)
             cv2.destroyAllWindows()
@@ -554,10 +501,8 @@ if option == "3" or option == "Resize Images & Videos":
                 cv2.VideoWriter('Vid Name RS.US.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open2)
                 print("Successfully Saved!")
 
-                try:
-                    cv2.VideoWriter('Vid Name RS.US.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open2)
-                except Exception as error_opening_vid:
-                    print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
+                try: cv2.VideoWriter('Vid Name RS.US.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open2)
+                except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
                 exit()
             elif vid_save1 == "N" or vid_save1 == "n":
                 print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
@@ -592,10 +537,8 @@ Choose \033[1;33m: \033[1;37m""")
                 cvt_img_color1 = cv2.cvtColor(img_read4, cv2.COLOR_RGB2GRAY)
                 img_open4 = cv2.imshow('Img Name', cvt_img_color1)
 
-                try:
-                    img_open4 = cv2.imshow('Img Name', cvt_img_color1)
-                except Exception as error_opening_img:
-                    print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                try: img_open4 = cv2.imshow('Img Name', cvt_img_color1)
+                except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
@@ -612,10 +555,8 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC1.png', cvt_img_color1)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC1.png', cvt_img_color1)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC1.png', cvt_img_color1)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
                     elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                         directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -624,13 +565,10 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC1.jpg', cvt_img_color1)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC1.jpg', cvt_img_color1)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC1.jpg', cvt_img_color1)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 elif img_save6 == "N" or img_save6 == "n":
                     print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                     exit()
@@ -641,10 +579,8 @@ Choose \033[1;33m: \033[1;37m""")
                 cvt_img_color2 = cv2.cvtColor(img_read4, cv2.COLOR_RGB2HSV)
                 img_open4 = cv2.imshow('Img Name', cvt_img_color2)
 
-                try:
-                    img_open4 = cv2.imshow('Img Name', cvt_img_color2)
-                except Exception as error_opening_img:
-                    print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                try: img_open4 = cv2.imshow('Img Name', cvt_img_color2)
+                except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
@@ -661,10 +597,8 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC2.png', cvt_img_color2)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC2.png', cvt_img_color2)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC2.png', cvt_img_color2)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
                     elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                         directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -673,27 +607,20 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC2.jpg', cvt_img_color2)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC2.jpg', cvt_img_color2)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC2.jpg', cvt_img_color2)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 elif img_save7 == "N" or img_save7 == "n":
                     print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
-                    exit()
+                else: print("\033[1;31mPlease Check The Correct Option!") exit()
             elif choose_color == "3" or choose_color == "RGB → LAB":
                 cvt_img_color3 = cv2.cvtColor(img_read4, cv2.COLOR_RGB2LAB)
                 img_open4 = cv2.imshow('Img Name', cvt_img_color3)
 
-                try:
-                    img_open4 = cv2.imshow('Img Name', cvt_img_color3)
-                except Exception as error_opening_img:
-                    print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                try: img_open4 = cv2.imshow('Img Name', cvt_img_color3)
+                except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
@@ -710,10 +637,8 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC3.png', cvt_img_color3)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC3.png', cvt_img_color3)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC3.png', cvt_img_color3)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
                     elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                         directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -722,27 +647,20 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC3.jpg', cvt_img_color3)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC3.jpg', cvt_img_color3)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC3.jpg', cvt_img_color3)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 elif img_save8 == "N" or img_save8 == "n":
                     print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
-                    exit()
+                else: print("\033[1;31mPlease Check The Correct Option!") exit()
             elif choose_color == "4" or choose_color == "RGB → XYZ":
                 cvt_img_color4 = cv2.cvtColor(img_read4, cv2.COLOR_RGB2XYZ)
                 img_open4 = cv2.imshow('Img Name', cvt_img_color4)
 
-                try:
-                    img_open4 = cv2.imshow('Img Name', cvt_img_color4)
-                except Exception as error_opening_img:
-                    print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                try: img_open4 = cv2.imshow('Img Name', cvt_img_color4)
+                except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
@@ -759,10 +677,8 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC4.png', cvt_img_color4)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC4.png', cvt_img_color4)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC4.png', cvt_img_color4)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
                     elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                         directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -771,27 +687,21 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC4.jpg', cvt_img_color4)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC4.jpg', cvt_img_color4)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC4.jpg', cvt_img_color4)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 elif img_save9 == "N" or img_save9 == "n":
                     print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
                     exit()
             elif choose_color == "5" or choose_color == "RGB → YCrCb":
                 cvt_img_color5 = cv2.cvtColor(img_read4, cv2.COLOR_RGB2YCrCb)
                 img_open4 = cv2.imshow('Img Name', cvt_img_color5)
 
-                try:
-                    img_open4 = cv2.imshow('Img Name', cvt_img_color5)
-                except Exception as error_opening_img:
-                    print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                try: img_open4 = cv2.imshow('Img Name', cvt_img_color5)
+                except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
@@ -808,10 +718,8 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC5.png', cvt_img_color5)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC5.png', cvt_img_color5)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC5.png', cvt_img_color5)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
                     elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                         directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -820,27 +728,21 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC5.jpg', cvt_img_color5)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC5.jpg', cvt_img_color5)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC5.jpg', cvt_img_color5)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 elif img_save10 == "N" or img_save10 == "n":
                     print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
                     exit()
             elif choose_color == "6" or choose_color == "LAB → RGB":
                 cvt_img_color6 = cv2.cvtColor(img_read4, cv2.COLOR_Lab2LRGB)
                 img_open4 = cv2.imshow('Img Name', cvt_img_color6)
 
-                try:
-                    img_open4 = cv2.imshow('Img Name', cvt_img_color6)
-                except Exception as error_opening_img:
-                    print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                try: img_open4 = cv2.imshow('Img Name', cvt_img_color6)
+                except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
@@ -857,10 +759,8 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC6.png', cvt_img_color6)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC6.png', cvt_img_color6)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC6.png', cvt_img_color6)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
                     elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                         directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -869,27 +769,21 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC6.jpg', cvt_img_color6)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC6.jpg', cvt_img_color6)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC6.jpg', cvt_img_color6)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 elif img_save11 == "N" or img_save11 == "n":
                     print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
                     exit()
             elif choose_color == "7" or choose_color == "XYZ → RGB":
                 cvt_img_color7 = cv2.cvtColor(img_read4, cv2.COLOR_XYZ2RGB)
                 img_open4 = cv2.imshow('Img Name', cvt_img_color7)
 
-                try:
-                    img_open4 = cv2.imshow('Img Name', cvt_img_color7)
-                except Exception as error_opening_img:
-                    print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                try: img_open4 = cv2.imshow('Img Name', cvt_img_color7)
+                except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
@@ -906,10 +800,8 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC7.png', cvt_img_color7)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC7.png', cvt_img_color7)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC7.png', cvt_img_color7)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
                     elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                         directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -918,26 +810,20 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC7.jpg', cvt_img_color7)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC7.jpg', cvt_img_color7)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC7.jpg', cvt_img_color7)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 elif img_save12 == "N" or img_save12 == "n":
                     print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
             elif choose_color == "8" or choose_color == "YCrCb → RGB":
                 cvt_img_color8 = cv2.cvtColor(img_read4, cv2.COLOR_YCrCb2RGB)
                 img_open4 = cv2.imshow('Img Name', cvt_img_color8)
 
-                try:
-                    img_open4 = cv2.imshow('Img Name', cvt_img_color8)
-                except Exception as error_opening_img:
-                    print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                try: img_open4 = cv2.imshow('Img Name', cvt_img_color8)
+                except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
@@ -954,10 +840,8 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC8.png', cvt_img_color8)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC8.png', cvt_img_color8)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC8.png', cvt_img_color8)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
                     elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                         directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -966,18 +850,14 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name CIC8.jpg', cvt_img_color8)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name CIC8.jpg', cvt_img_color8)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name CIC8.jpg', cvt_img_color8)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 elif img_save13 == "N" or img_save13 == "n":
                     print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
             else:
                 print("\033[1;31mPlease Check The Number Is Correct!")
         if choose_edit == "2" or choose_edit == "Add Effects":
@@ -998,13 +878,10 @@ Choose \033[1;33m: \033[1;37m""")
                     if num >= 1 and num <= 100:
                         blur_effect = cv2.blur(img_read4, (num, num))
                         img_open4 = cv2.imshow('Img Name', blur_effect)
-                    else:
-                        print("Num Is Not Within Range!")
+                    else: print("Num Is Not Within Range!")
 
-                    try:
-                        img_open4 = cv2.imshow('Img Name', blur_effect)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                    try: img_open4 = cv2.imshow('Img Name', blur_effect)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                     cv2.waitKey(0)
                     cv2.destroyAllWindows()
@@ -1021,10 +898,8 @@ Choose \033[1;33m: \033[1;37m""")
                             cv2.imwrite('Img Name BI1.png', blur_effect)
                             print("Successfully Saved!")
 
-                            try:
-                                cv2.imwrite('Img Name BI1.png', blur_effect)
-                            except Exception as error_opening_img:
-                                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                            try: cv2.imwrite('Img Name BI1.png', blur_effect)
+                            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                             exit()
                         elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                             directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -1033,32 +908,23 @@ Choose \033[1;33m: \033[1;37m""")
                             cv2.imwrite('Img Name BI1.jpg', blur_effect)
                             print("Successfully Saved!")
 
-                            try:
-                                cv2.imwrite('Img Name BI1.jpg', blur_effect)
-                            except Exception as error_opening_img:
-                                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                            try: cv2.imwrite('Img Name BI1.jpg', blur_effect)
+                            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                             exit()
-                        else:
-                            print("\033[1;31mPlease Check The Correct Option!")
+                        else: print("\033[1;31mPlease Check The Correct Option!")
                     elif img_save14 == "N" or img_save14 == "n":
                         print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 if choose_blur == "2" or choose_blur == "GaussianBlur" or choose_blur == "gaussianblur":
                     num = int(input("Enter A Num Odd Between 1-100 : "))
-                    if num >= 1 and num <= 100:
-                        if num % 2 == 0:
-                            print("\033[1;31mPlease Enter An Odd Num")
+                    if num >= 1 and num <= 100: if num % 2 == 0: print("\033[1;31mPlease Enter An Odd Num")
                         gaussianblur_effect = cv2.GaussianBlur(img_read4, (num, num), 0)
                         img_open4 = cv2.imshow('Img Name', gaussianblur_effect)
-                    else:
-                        print("Num Is Not Within Range!")
+                    else: print("Num Is Not Within Range!")
 
-                    try:
-                        img_open4 = cv2.imshow('Img Name', gaussianblur_effect)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                    try: img_open4 = cv2.imshow('Img Name', gaussianblur_effect)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                     cv2.waitKey(0)
                     cv2.destroyAllWindows()
@@ -1075,10 +941,8 @@ Choose \033[1;33m: \033[1;37m""")
                             cv2.imwrite('Img Name BI2.png', gaussianblur_effect)
                             print("Successfully Saved!")
 
-                            try:
-                                cv2.imwrite('Img Name BI2.png', gaussianblur_effect)
-                            except Exception as error_opening_img:
-                                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                            try: cv2.imwrite('Img Name BI2.png', gaussianblur_effect)
+                            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                             exit()
                         elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                             directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -1087,32 +951,23 @@ Choose \033[1;33m: \033[1;37m""")
                             cv2.imwrite('Img Name BI2.jpg', gaussianblur_effect)
                             print("Successfully Saved!")
 
-                            try:
-                                cv2.imwrite('Img Name BI2.jpg', gaussianblur_effect)
-                            except Exception as error_opening_img:
-                                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                            try: cv2.imwrite('Img Name BI2.jpg', gaussianblur_effect)
+                            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                             exit()
-                        else:
-                            print("\033[1;31mPlease Check The Correct Option!")
+                        else: print("\033[1;31mPlease Check The Correct Option!")
                     elif img_save15 == "N" or img_save15 == "n":
                         print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 if choose_blur == "3" or choose_blur == "Media Blurring" or choose_blur == "media blurring":
                     num = int(input("Enter A Num Odd between 1-100 : "))
-                    if num >= 1 and num <= 100:
-                        if num % 2 == 0:
-                            print("\033[1;31mPlease Enter An Odd Num")
+                    if num >= 1 and num <= 100: if num % 2 == 0: print("\033[1;31mPlease Enter An Odd Num")
                         media_blurring_effect = cv2.medianBlur(img_read4, num)
                         img_open4 = cv2.imshow('Img Name', media_blurring_effect)
-                    else:
-                        print("Num Is Not Within Range!")
+                    else: print("Num Is Not Within Range!")
 
-                    try:
-                        img_open4 = cv2.imshow('Img Name', media_blurring_effect)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                    try: img_open4 = cv2.imshow('Img Name', media_blurring_effect)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                     cv2.waitKey(0)
                     cv2.destroyAllWindows()
@@ -1129,10 +984,8 @@ Choose \033[1;33m: \033[1;37m""")
                             cv2.imwrite('Img Name BI3.png', media_blurring_effect)
                             print("Successfully Saved!")
 
-                            try:
-                                cv2.imwrite('Img Name BI3.png', media_blurring_effect)
-                            except Exception as error_opening_img:
-                                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                            try: cv2.imwrite('Img Name BI3.png', media_blurring_effect)
+                            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                             exit()
                         elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                             directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -1141,30 +994,23 @@ Choose \033[1;33m: \033[1;37m""")
                             cv2.imwrite('Img Name BI3.jpg', media_blurring_effect)
                             print("Successfully Saved!")
 
-                            try:
-                                cv2.imwrite('Img Name BI3.jpg', media_blurring_effect)
-                            except Exception as error_opening_img:
-                                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                            try: cv2.imwrite('Img Name BI3.jpg', media_blurring_effect)
+                            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                             exit()
-                        else:
-                            print("\033[1;31mPlease Check The Correct Option!")
+                        else: print("\033[1;31mPlease Check The Correct Option!")
                     elif img_save16 == "N" or img_save16 == "n":
                         print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 if choose_blur == "4" or choose_blur == "BilateralFilter" or choose_blur == "bilateralfilter":
                     num = int(input("Enter A Num Between 1-100 : "))
                     if num >= 1 and num <= 100:
                         bilateralFilter_effect = cv2.bilateralFilter(img_read4, num, 75, 75)
                         img_open4 = cv2.imshow('Img Name', bilateralFilter_effect)
-                    else:
-                        print("Num Is Not Within Range!")
+                    else: print("Num Is Not Within Range!")
 
-                    try:
-                        img_open4 = cv2.imshow('Img Name', bilateralFilter_effect)
-                    except Exception as error_opening_img:
-                        print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                    try: img_open4 = cv2.imshow('Img Name', bilateralFilter_effect)
+                    except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                     cv2.waitKey(0)
                     cv2.destroyAllWindows()
@@ -1181,10 +1027,8 @@ Choose \033[1;33m: \033[1;37m""")
                             cv2.imwrite('Img Name BI4.png', bilateralFilter_effect)
                             print("Successfully Saved!")
 
-                            try:
-                                cv2.imwrite('Img Name BI4.png', bilateralFilter_effect)
-                            except Exception as error_opening_img:
-                                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                            try: cv2.imwrite('Img Name BI4.png', bilateralFilter_effect)
+                            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                             exit()
                         elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                             directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -1193,18 +1037,14 @@ Choose \033[1;33m: \033[1;37m""")
                             cv2.imwrite('Img Name BI4.jpg', bilateralFilter_effect)
                             print("Successfully Saved!")
 
-                            try:
-                                cv2.imwrite('Img Name BI4.jpg', bilateralFilter_effect)
-                            except Exception as error_opening_img:
-                                print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                            try: cv2.imwrite('Img Name BI4.jpg', bilateralFilter_effect)
+                            except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                             exit()
-                        else:
-                            print("\033[1;31mPlease Check The Correct Option!")
+                        else: print("\033[1;31mPlease Check The Correct Option!")
                     elif img_save17 == "N" or img_save17 == "n":
                         print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
             elif choose_effect == "2" or choose_effect == "Edge Cascade":
                 t_lower = int(input("Enter The Lower Threshold Value : "))
                 t_upper = int(input("Enter The Upper Threshold Value : "))
@@ -1214,10 +1054,8 @@ Choose \033[1;33m: \033[1;37m""")
 
                 img_open4 = cv2.imshow('Img Name - Edge Cascade Effect', edge_cascade)
 
-                try:
-                    img_open4 = cv2.imshow('Img Name - Edge Cascade Effect', edge_cascade)
-                except Exception as error_opening_img:
-                    print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
+                try: img_open4 = cv2.imshow('Img Name - Edge Cascade Effect', edge_cascade)
+                except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")
 
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
@@ -1234,10 +1072,8 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name EC.png', edge_cascade)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name EC.png', edge_cascade)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name EC.png', edge_cascade)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
                     elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                         directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -1246,41 +1082,31 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite(filename, edge_cascade)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite(filename, edge_cascade)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite(filename, edge_cascade)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 elif img_save18 == "N" or img_save18 == "n":
                     print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
             elif choose_effect == "3" or choose_effect == "Dilated Effect":
                 kernel_type = input("""\033[1;37mKernel Types
 \033[1;37m[\033[1;33m1\033[1;37m] \033[1;33m- \033[1;37mMORPH RECT
 \033[1;37m[\033[1;33m2\033[1;37m] \033[1;33m- \033[1;37mMORPH ELLIPSE
 \033[1;37m[\033[1;33m3\033[1;37m] \033[1;33m- \033[1;37mMORPH CROSS
 \033[1;37mChoose \033[1;33m: \033[1;37m""")
-                if kernel_type == "1" or kernel_type == "MORPH RECT":
-                    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
-                elif kernel_type == "2" or kernel_type == "MORPH ELLIPSE":
-                    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-                elif kernel_type == "3" or kernel_type == "MORPH CROSS":
-                    kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (5, 5))
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                if kernel_type == "1" or kernel_type == "MORPH RECT": kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
+                elif kernel_type == "2" or kernel_type == "MORPH ELLIPSE": kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+                elif kernel_type == "3" or kernel_type == "MORPH CROSS": kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (5, 5))
+                else: print("\033[1;31mPlease Check The Correct Option!")
                 iterations = int(input("\033[1;37mEnter The Num Of Iterations \033[1;33m: \033[1;37m"))
                 dilated_effect = cv2.dilate(img_read4, kernel, iterations=iterations)
 
                 img_open4 = cv2.imshow('Img Name - Dilated Effect', dilated_effect)
 
-                try:
-                    img_open4 = cv2.imshow('Img Name - Dilated Effect', dilated_effect)
-                except Exception as error_opening_img:
-                    print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")  
+                try: img_open4 = cv2.imshow('Img Name - Dilated Effect', dilated_effect)
+                except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")  
 
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
@@ -1297,10 +1123,8 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name DE.png', dilated_effect)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name DE.png', dilated_effect)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name DE.png', dilated_effect)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
                     elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                         directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -1309,41 +1133,31 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite(filename, dilated_effect)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite(filename, dilated_effect)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite(filename, dilated_effect)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 elif img_save19 == "N" or img_save19 == "n":
                     print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
             elif choose_effect == "4" or choose_effect == "Eroded Effect":
                 kernel_type = input("""\033[1;37mKernel Types
 \033[1;37m[\033[1;33m1\033[1;37m] \033[1;33m- \033[1;37mMORPH RECT
 \033[1;37m[\033[1;33m2\033[1;37m] \033[1;33m- \033[1;37mMORPH ELLIPSE
 \033[1;37m[\033[1;33m3\033[1;37m] \033[1;33m- \033[1;37mMORPH CROSS
 \033[1;37mChoose \033[1;33m: \033[1;37m""")
-                if kernel_type == "1" or kernel_type == "MORPH RECT":
-                    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
-                elif kernel_type == "2" or kernel_type == "MORPH ELLIPSE":
-                    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-                elif kernel_type == "3" or kernel_type == "MORPH CROSS":
-                    kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (5, 5))
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
+                if kernel_type == "1" or kernel_type == "MORPH RECT": kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
+                elif kernel_type == "2" or kernel_type == "MORPH ELLIPSE": kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+                elif kernel_type == "3" or kernel_type == "MORPH CROSS": kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (5, 5))
+                else: print("\033[1;31mPlease Check The Correct Option!")
                 iterations = int(input("\033[1;37mEnter The Num Of Iterations \033[1;33m: \033[1;37m"))
                 eroded_effect = cv2.erode(img_read4, kernel, iterations=iterations)
 
                 img_open4 = cv2.imshow('Img Name - Eroded Effect', eroded_effect)
 
-                try:
-                    img_open4 = cv2.imshow('Img Name - Eroded Effect', eroded_effect)
-                except Exception as error_opening_img:
-                    print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")  
+                try: img_open4 = cv2.imshow('Img Name - Eroded Effect', eroded_effect)
+                except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")  
 
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
@@ -1360,10 +1174,8 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite('Img Name EE.png', eroded_effect)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite('Img Name EE.png', eroded_effect)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite('Img Name EE.png', eroded_effect)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
                     elif choose_format == "2" or choose_format == ".jpg" or choose_format == ".JPG":
                         directory_img = input("\033[1;37mEnter The Directory \033[1;33m: \033[1;37m")
@@ -1372,20 +1184,15 @@ Choose \033[1;33m: \033[1;37m""")
                         cv2.imwrite(filename, eroded_effect)
                         print("Successfully Saved!")
 
-                        try:
-                            cv2.imwrite(filename, eroded_effect)
-                        except Exception as error_opening_img:
-                            print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
+                        try: cv2.imwrite(filename, eroded_effect)
+                        except Exception as error_opening_img: print(f"\033[1;31mPlease Check That The Img Name Or Path Is Correct!\n{error_opening_img}")            
                         exit()
-                    else:
-                        print("\033[1;31mPlease Check The Correct Option!")
+                    else: print("\033[1;31mPlease Check The Correct Option!")
                 elif img_save20 == "N" or img_save20 == "n":
                     print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
                     exit()
-                else:
-                    print("\033[1;31mPlease Check The Correct Option!")
-            else:
-                print("\033[1;31mPlease Check The Correct Option!")
+                else: print("\033[1;31mPlease Check The Correct Option!")
+            else: print("\033[1;31mPlease Check The Correct Option!")
     if choose_option4 == "2" or choose_option4 == "Videos":
         vid_name3 = input("Enter The Vid Name Or Path \033[1;33m: \033[1;37m")
         vid_read3 = cv2.VideoCapture(vid_name3)
@@ -1407,13 +1214,10 @@ Choose \033[1;33m: \033[1;37m""")
                 cvt_vid_color1 = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
                 vid_open3 = cv2.imshow('Vid Name', cvt_vid_color1)
 
-                if cv2.waitKey(1) & 0xff == ord('q'):
-                    break
+                if cv2.waitKey(1) & 0xff == ord('q'): break
                     
-            try:
-                vid_open3 = cv2.imshow('Vid Name', frame)
-            except Exception as error_opening_vid:
-                print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
+            try: vid_open3 = cv2.imshow('Vid Name', frame)
+            except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
 
             vid_save3 = input("\033[1;37mDo You Want Save It? (\033[1;33mY\033[1;37m/\033[1;33mN\033[1;37m) \033[1;33m")
             if vid_save3 == "Y" or vid_save3 == "y":
@@ -1423,8 +1227,7 @@ Choose \033[1;33m: \033[1;37m""")
                 cv2.VideoWriter('Vid Name CVC1.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open3)
                 print("Successfully Saved!")
 
-                try:
-                    cv2.VideoWriter('Vid Name CVC1.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open3)
+                try: cv2.VideoWriter('Vid Name CVC1.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open3)
                 except Exception as error_opening_vid:
                     print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
                 exit()
@@ -1440,13 +1243,10 @@ Choose \033[1;33m: \033[1;37m""")
                 cvt_vid_color2 = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
                 vid_open4 = cv2.imshow('Vid Name', cvt_vid_color2)
 
-                if cv2.waitKey(1) & 0xff == ord('q'):
-                    break
+                if cv2.waitKey(1) & 0xff == ord('q'): break
                     
-            try:
-                vid_open4 = cv2.imshow('Vid Name', frame)
-            except Exception as error_opening_vid:
-                print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
+            try: vid_open4 = cv2.imshow('Vid Name', frame)
+            except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
 
             vid_save4 = input("\033[1;37mDo You Want Save It? (\033[1;33mY\033[1;37m/\033[1;33mN\033[1;37m) \033[1;33m")
             if vid_save4 == "Y" or vid_save4 == "y":
@@ -1456,8 +1256,7 @@ Choose \033[1;33m: \033[1;37m""")
                 cv2.VideoWriter('Vid Name CVC2.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open4)
                 print("Successfully Saved!")
 
-                try:
-                    cv2.VideoWriter('Vid Name CVC2.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open4)
+                try: cv2.VideoWriter('Vid Name CVC2.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open4)
                 except Exception as error_opening_vid:
                     print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")
                 exit()
@@ -1473,13 +1272,10 @@ Choose \033[1;33m: \033[1;37m""")
                 cvt_vid_color3 = cv2.cvtColor(frame, cv2.COLOR_RGB2LAB)
                 vid_open5 = cv2.imshow('Vid Name', cvt_vid_color3)
 
-                if cv2.waitKey(1) & 0xff == ord('q'):
-                    break
+                if cv2.waitKey(1) & 0xff == ord('q'): break
                     
-            try:
-                vid_open5 = cv2.imshow('Vid Name', frame)
-            except Exception as error_opening_vid:
-                print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
+            try: vid_open5 = cv2.imshow('Vid Name', frame)
+            except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
 
             vid_save5 = input("\033[1;37mDo You Want Save It? (\033[1;33mY\033[1;37m/\033[1;33mN\033[1;37m) \033[1;33m")
             if vid_save5 == "Y" or vid_save5 == "y":
@@ -1489,10 +1285,8 @@ Choose \033[1;33m: \033[1;37m""")
                 cv2.VideoWriter('Vid Name CVC3.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open5)
                 print("Successfully Saved!")
 
-                try:
-                    cv2.VideoWriter('Vid Name CVC3.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open5)
-                except Exception as error_opening_vid:
-                    print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
+                try: cv2.VideoWriter('Vid Name CVC3.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open5)
+                except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
                 exit()
             elif vid_save5 == "N" or vid_save5 == "n":
                 print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
@@ -1506,13 +1300,10 @@ Choose \033[1;33m: \033[1;37m""")
                 cvt_vid_color4 = cv2.cvtColor(frame, cv2.COLOR_RGB2XYZ)
                 vid_open7 = cv2.imshow('Vid Name', cvt_vid_color4)
 
-                if cv2.waitKey(1) & 0xff == ord('q'):
-                    break
+                if cv2.waitKey(1) & 0xff == ord('q'): break
                     
-            try:
-                vid_open7 = cv2.imshow('Vid Name', frame)
-            except Exception as error_opening_vid:
-                print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
+            try: vid_open7 = cv2.imshow('Vid Name', frame)
+            except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
 
             vid_save6 = input("\033[1;37mDo You Want Save It? (\033[1;33mY\033[1;37m/\033[1;33mN\033[1;37m) \033[1;33m")
             if vid_save6 == "Y" or vid_save6 == "y":
@@ -1522,8 +1313,7 @@ Choose \033[1;33m: \033[1;37m""")
                 cv2.VideoWriter('Vid Name CVC4.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open7)
                 print("Successfully Saved!")
 
-                try:
-                    cv2.VideoWriter('Vid Name CVC4.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open7)
+                try: cv2.VideoWriter('Vid Name CVC4.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open7)
                 except Exception as error_opening_vid:
                     print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
                 exit()
@@ -1539,13 +1329,10 @@ Choose \033[1;33m: \033[1;37m""")
                 cvt_vid_color5 = cv2.cvtColor(frame, cv2.COLOR_RGB2YCrCb)
                 vid_open8 = cv2.imshow('Vid Name', cvt_vid_color5)
 
-                if cv2.waitKey(1) & 0xff == ord('q'):
-                    break
+                if cv2.waitKey(1) & 0xff == ord('q'): break
                     
-            try:
-                vid_open8 = cv2.imshow('Vid Name', frame)
-            except Exception as error_opening_vid:
-                print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
+            try: vid_open8 = cv2.imshow('Vid Name', frame)
+            except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
 
             vid_save7 = input("\033[1;37mDo You Want Save It? (\033[1;33mY\033[1;37m/\033[1;33mN\033[1;37m) \033[1;33m")
             if vid_save7 == "Y" or vid_save7 == "y":
@@ -1555,10 +1342,8 @@ Choose \033[1;33m: \033[1;37m""")
                 cv2.VideoWriter('Vid Name CVC5.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open8)
                 print("Successfully Saved!")
 
-                try:
-                    cv2.VideoWriter('Vid Name CVC5.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open8)
-                except Exception as error_opening_vid:
-                    print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
+                try: cv2.VideoWriter('Vid Name CVC5.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open8)
+                except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
                 exit()
             elif vid_save7 == "N" or vid_save7 == "n":
                 print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
@@ -1572,13 +1357,10 @@ Choose \033[1;33m: \033[1;37m""")
                 cvt_vid_color6 = cv2.cvtColor(frame, cv2.COLOR_Lab2LRGB)
                 vid_open9 = cv2.imshow('Vid Name', cvt_vid_color6)
 
-                if cv2.waitKey(1) & 0xff == ord('q'):
-                    break
+                if cv2.waitKey(1) & 0xff == ord('q'): break
                     
-            try:
-                vid_open9 = cv2.imshow('Vid Name', cvt_vid_color6)
-            except Exception as error_opening_vid:
-                print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
+            try: vid_open9 = cv2.imshow('Vid Name', cvt_vid_color6)
+            except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
 
             vid_save8 = input("\033[1;37mDo You Want Save It? (\033[1;33mY\033[1;37m/\033[1;33mN\033[1;37m) \033[1;33m")
             if vid_save8 == "Y" or vid_save8 == "y":
@@ -1588,8 +1370,7 @@ Choose \033[1;33m: \033[1;37m""")
                 cv2.VideoWriter('Vid Name CVC6.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open9)
                 print("Successfully Saved!")
 
-                try:
-                    cv2.VideoWriter('Vid Name CVC6.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open9)
+                try: cv2.VideoWriter('Vid Name CVC6.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open9)
                 except Exception as error_opening_vid:
                     print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
                 exit()
@@ -1605,13 +1386,10 @@ Choose \033[1;33m: \033[1;37m""")
                 cvt_vid_color7 = cv2.cvtColor(frame, cv2.COLOR_XYZ2RGB)
                 vid_open9 = cv2.imshow('Vid Name', cvt_vid_color7)
 
-                if cv2.waitKey(1) & 0xff == ord('q'):
-                    break
+                if cv2.waitKey(1) & 0xff == ord('q'): break
                     
-            try:
-                vid_open9 = cv2.imshow('Vid Name', cvt_vid_color6)
-            except Exception as error_opening_vid:
-                print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
+            try: vid_open9 = cv2.imshow('Vid Name', cvt_vid_color6)
+            except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
 
             vid_save8 = input("\033[1;37mDo You Want Save It? (\033[1;33mY\033[1;37m/\033[1;33mN\033[1;37m) \033[1;33m")
             if vid_save8 == "Y" or vid_save8 == "y":
@@ -1621,10 +1399,8 @@ Choose \033[1;33m: \033[1;37m""")
                 cv2.VideoWriter('Vid Name CVC7.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open9)
                 print("Successfully Saved!")
 
-                try:
-                    cv2.VideoWriter('Vid Name CVC7.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open9)
-                except Exception as error_opening_vid:
-                    print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
+                try: cv2.VideoWriter('Vid Name CVC7.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open9)
+                except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")            
                 exit()
             elif vid_save8 == "N" or vid_save8 == "n":
                 print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
@@ -1638,13 +1414,10 @@ Choose \033[1;33m: \033[1;37m""")
                 cvt_vid_color8 = cv2.cvtColor(frame, cv2.COLOR_YCrCb2RGB)
                 vid_open9 = cv2.imshow('Vid Name', cvt_vid_color8)
 
-                if cv2.waitKey(1) & 0xff == ord('q'):
-                    break
+                if cv2.waitKey(1) & 0xff == ord('q'): break
                     
-            try:
-                vid_open9 = cv2.imshow('Vid Name', cvt_vid_color8)
-            except Exception as error_opening_vid:
-                print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
+            try: vid_open9 = cv2.imshow('Vid Name', cvt_vid_color8)
+            except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path is Correct!\n{error_opening_vid}")
 
             vid_save8 = input("\033[1;37mDo You Want Save It? (\033[1;33mY\033[1;37m/\033[1;33mN\033[1;37m) \033[1;33m")
             if vid_save8 == "Y" or vid_save8 == "y":
@@ -1654,10 +1427,8 @@ Choose \033[1;33m: \033[1;37m""")
                 cv2.VideoWriter('Vid Name CVC8.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open9)
                 print("Successfully Saved!")
 
-                try:
-                    cv2.VideoWriter('Vid Name CVC8.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open9)
-                except Exception as error_opening_vid:
-                    print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")
+                try: cv2.VideoWriter('Vid Name CVC8.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 10, vid_open9)
+                except Exception as error_opening_vid: print(f"\033[1;31mPlease Check That The Vid Name Or Path Is Correct!\n{error_opening_vid}")
                 exit()
             elif vid_save8 == "N" or vid_save8 == "n":
                 print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
@@ -1665,15 +1436,5 @@ Choose \033[1;33m: \033[1;37m""")
             else:
                 print("\033[1;31mPlease Check The Correct Option!")
                 exit()
-        else:
-	        print("\033[1;31mPlease Check The Correct Option!")
-else:
-    print("\033[1;31mPlease Check The Correct Option!")
-
-website = input("\033[1;37mDo You Want To Visit Website For All Accs? (\033[1;33mY\033[1;37m/\033[1;33mN\033[1;37m) \033[1;33m")
-if website == "Y" or website == "y":
-	webbrowser.open("https://linktr.ee/tler.sa")
-elif website == "N" or website == "n":
-	print("\033[1;37mNo Problem \033[1;34m:) \033[1;37m...")
-else:
-	print("\033[1;31mPlease Check The Correct Option!")
+        else: print("\033[1;31mPlease Check The Correct Option!")
+else: print("\033[1;31mPlease Check The Correct Option!")
