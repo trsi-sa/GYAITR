@@ -39,3 +39,5 @@
 ```
 pip install opencv-python os time
 ```
+
+### [نسخة .exe للـWindows](https://t.me/tler_sa/156)
